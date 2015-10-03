@@ -1,0 +1,52 @@
+#General
+alias ls='ls -a'
+alias ll='ls -al'
+alias ~='cd ~'
+alias sites='cd ~/Sites'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Shortcuts
+alias d="cd ~/Documents/Dropbox"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias p="cd ~/projects"
+alias g="git"
+alias h="history"
+alias j="jobs"
+
+#Cirro
+alias starwars="telnet towel.blinkenlights.nl"
+alias dev="ssh C1rro@cdev1.com"
+alias prod="ssh will@5808.cl7.net"
+alias php="drush php-eval"
+alias qlist="drush queue-list"
+alias qrun="drush queue-run"
+alias hosts="sudo subl /etc/hosts"
+alias httpd="subl /applications/mamp/conf/apache/httpd.conf"
+
+# Get week number
+alias week='date +%V'
+
+# Stopwatch
+alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# Switch to project
+function proj () {
+	cd ~/Sites/$@
+}
+
+# Connect to Cirro ec2 instance
+function ec2 () {
+	ssh -i ~/cirrously.pem ec2-user@$1.crsly.com
+}
